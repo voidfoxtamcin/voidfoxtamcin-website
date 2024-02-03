@@ -1,6 +1,7 @@
 ---
 const { title } = Astro.props;
-const ogImage = new URL('/img/og_image.png', Astro.url)
+const base = import.meta.env.DEV ? Astro.url.origin : 'https://voidfoxtamcin.vercel.app';
+const ogImage = new URL('/img/og_image.png', base)
 ---
 
 <!doctype html>
