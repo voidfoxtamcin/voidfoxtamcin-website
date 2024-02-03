@@ -1,0 +1,56 @@
+---
+import MyLayout from "../layouts/MyLayout.astro";
+import {Image} from "astro:assets"
+import commsPrice from "../img/comms-price.jpg"
+---
+
+<MyLayout title="Commission Info!">
+    <div class="container mx-auto py-8">
+        <hr class="border-2 border-black my-8" />
+        <h1 class="text-5xl font-black italic text-center mb-8">TERMS <span class="text-blue-800">OF</span> SERVICE</h1>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="border-2 border-black custom-shadow">
+                <p class="border-b-2 border-black px-4 py-3 bg-green-50 text-green-700 text-center text-xl font-bold">&check; I WILL DO</p>
+                <div class="p-4">
+                    <ul class="text-xl font-semibold list-inside list-disc">
+                        <li>Furry</li>
+                        <li>Humans</li>
+                        <li>Mobian</li>
+                        <li>Original Characters</li>
+                        <li>Suggestive</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-2 border-black custom-shadow">
+                <p class="border-b-2 border-black px-4 py-3 bg-red-50 text-red-700 text-center text-xl font-bold">&cross; I WON'T DO</p>
+                <div class="p-4">
+                    <ul class="text-xl font-semibold list-inside list-disc">
+                        <li>NSFW / Gore</li>
+                        <li>Mecha</li>
+                        <li>Complicated Design</li>
+                        <li>Political Related</li>
+                        <li>Hate Speech</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-2 border-black my-8" />
+
+        <h1 class="text-5xl font-black italic text-center my-8">COMMISSION PRICE</h1>
+        <Image src={commsPrice} alt={'comms price'} class="max-w-2xl mx-auto border-2 border-black custom-shadow" />
+
+        <hr class="border-2 border-black my-8" />
+
+        <h1 class="text-5xl font-black italic text-center my-8">COMMISSION STATUS: <span class="text-red-600">CLOSED</span></h1>
+        <div class="mt-8">
+            <a href="/" class="block px-4 py-3 text-center font-semibold bg-black text-xl text-white">GO BACK</a>
+          </div>
+    </div>
+</MyLayout>
+
+<style>
+    .custom-shadow{
+      box-shadow: 0.2rem 0.2rem 0rem #000000;
+    }
+  </style>

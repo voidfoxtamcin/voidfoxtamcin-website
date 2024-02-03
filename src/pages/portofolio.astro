@@ -1,0 +1,80 @@
+---
+import MyLayout from "../layouts/MyLayout.astro";
+import { Image } from "astro:assets";
+
+type Image = {
+  src: string;
+};
+
+let images: Image[] = [
+  {
+    src: "cahya.png",
+  },
+  {
+    src: "Blunt.png",
+  },
+  {
+    src: "buff bread.png",
+  },
+  {
+    src: "boyolali - Resized.png",
+  },
+  {
+    src: "Gamma Scary.png",
+  },
+  {
+    src: "Hmm.png",
+  },
+  {
+    src: "Pec 6.png",
+  },
+  {
+    src: "Tamcin.png",
+  },
+  {
+    src: "derg-yanara.png",
+  },
+  {
+    src: "espio.png",
+  },
+  {
+    src: "sprit-tamcin.png",
+  },
+  {
+    src: "Azzy.png",
+  },
+];
+---
+
+<MyLayout title="My Portofolio!">
+  <div class="container mx-auto border-x-2 border-black">
+  <div class="py-16">
+      <hr class="border-t-2 border-black">
+      <h1 class="text-5xl font-black italic text-center mt-4">! FINISHED ART !</h1>
+      <hr class="border-t-2 border-black mt-4">
+    </div>
+    
+    <div class="pb-16">
+      <div class="columns-2 md:columns-3 lg:columns-4 px-4">
+        {
+          images.map((img: Image, index: number) => (
+            <img
+            src={"img/" + img.src}
+            alt={"protofolio image " + index + 1}
+            class="mb-4 border-2 border-black custom-shadow"
+            />
+            ))
+          }
+    </div>
+    <div class="mt-8">
+      <a href="/" class="block px-4 py-3 text-center font-semibold bg-black text-xl text-white">GO BACK</a>
+    </div>
+  </div>
+</div>
+</MyLayout>
+
+<style>
+  .custom-shadow{
+    box-shadow: 0.2rem 0.2rem 0rem #000000;
+  }
+</style>
