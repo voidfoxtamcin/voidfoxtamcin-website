@@ -1,56 +1,122 @@
 ---
 import MyLayout from "../layouts/MyLayout.astro";
-import {Image} from "astro:assets"
-import commsPrice from "../img/comms-price.jpg"
+import { Image } from "astro:assets";
+import commsPrice from "../img/comms-price.jpg";
 ---
 
 <MyLayout title="Commission Info!">
-    <div class="container mx-auto py-8">
-        <hr class="border-2 border-black my-8" />
-        <h1 class="text-5xl font-black italic text-center mb-8">TERMS <span class="text-blue-800">OF</span> SERVICE</h1>
-        <div class="grid grid-cols-2 gap-4">
-            <div class="border-2 border-black custom-shadow">
-                <p class="border-b-2 border-black px-4 py-3 bg-green-50 text-green-700 text-center text-xl font-bold">&check; I WILL DO</p>
-                <div class="p-4">
-                    <ul class="text-xl font-semibold list-inside list-disc">
-                        <li>Furry</li>
-                        <li>Humans</li>
-                        <li>Mobian</li>
-                        <li>Original Characters</li>
-                        <li>Suggestive</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-2 border-black custom-shadow">
-                <p class="border-b-2 border-black px-4 py-3 bg-red-50 text-red-700 text-center text-xl font-bold">&cross; I WON'T DO</p>
-                <div class="p-4">
-                    <ul class="text-xl font-semibold list-inside list-disc">
-                        <li>NSFW / Gore</li>
-                        <li>Mecha</li>
-                        <li>Complicated Design</li>
-                        <li>Political Related</li>
-                        <li>Hate Speech</li>
-                    </ul>
-                </div>
-            </div>
+  <div class="container mx-auto py-8 px-4">
+    <hr class="border-2 border-black my-8" />
+    <h1 class="text-5xl font-black italic text-center mb-8">
+      TERMS <span class="text-blue-800">OF</span> SERVICE
+    </h1>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="border-2 border-black custom-shadow">
+        <p
+          class="border-b-2 border-black px-4 py-3 bg-green-50 text-green-700 text-center text-xl font-bold"
+        >
+          &check; I WILL DO
+        </p>
+        <div class="p-4">
+          <ul class="text-xl font-semibold list-inside list-disc">
+            <li><span class="bg-green-100">Furry</span></li>
+            <li><span class="bg-green-100">Humans</span></li>
+            <li><span class="bg-green-100">Mobian</span></li>
+            <li><span class="bg-green-100">Original Characters</span></li>
+            <li><span class="bg-green-100">Suggestive</span></li>
+          </ul>
         </div>
-
-        <hr class="border-2 border-black my-8" />
-
-        <h1 class="text-5xl font-black italic text-center my-8">COMMISSION PRICE</h1>
-        <Image src={commsPrice} alt={'comms price'} class="max-w-2xl mx-auto border-2 border-black custom-shadow" />
-
-        <hr class="border-2 border-black my-8" />
-
-        <h1 class="text-5xl font-black italic text-center my-8">COMMISSION STATUS: <span class="text-red-600">CLOSED</span></h1>
-        <div class="mt-8">
-            <a href="/" class="block px-4 py-3 text-center font-semibold bg-black text-xl text-white">GO BACK</a>
-          </div>
+      </div>
+      <div class="border-2 border-black custom-shadow">
+        <p
+          class="border-b-2 border-black px-4 py-3 bg-red-50 text-red-700 text-center text-xl font-bold"
+        >
+          &cross; I WON'T DO
+        </p>
+        <div class="p-4">
+          <ul class="text-xl font-semibold list-inside list-disc">
+            <li><span class="bg-red-100">NSFW / Gore</span></li>
+            <li><span class="bg-red-100">Mecha</span></li>
+            <li><span class="bg-red-100">Complicated Design</span></li>
+            <li><span class="bg-red-100">Political Related</span></li>
+            <li><span class="bg-red-100">Hate Speech</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
+
+    <hr class="border-2 border-black my-8" />
+
+    <div class="grid lg:grid-cols-2 gap-4 items-center">
+      <div>
+        <h1 class="text-5xl font-black italic text-center mb-8">
+          COMMISSION PRICE
+        </h1>
+        <Image
+          src={commsPrice}
+          alt={"comms price"}
+          class="max-w-2xl w-full mx-auto border-2 border-black custom-shadow"
+        />
+      </div>
+      <div>
+        <div class="bg-yellow-100 border-2 border-black px-4 py-3 note-shadow mb-4">
+          <h2 class="text-4xl font-black italic mb-6">! Notes</h2>
+          <ul class="text-xl font-semibold custom-disc list-inside">
+            <li>Additional characters +50% from the base price.</li>
+            <li>Payment via <span class="bg-blue-200">PayPal in USD</span></li>
+            <li>Complex background <span class="bg-blue-200">+$10</span></li>
+          </ul>
+        </div>
+        <div class="bg-yellow-100 border-2 border-black px-4 py-3 note-shadow">
+          <h2 class="text-4xl font-black italic mb-6">! Contacts</h2>
+          <ul class="text-xl font-semibold custom-disc list-inside">
+            <li>Discord: voidfoxtamcin</li>
+            <li>Telegram: voidfoxtamcin</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-2 border-black my-8" />
+
+    <h1 class="text-5xl font-black italic text-center my-8">
+      COMMISSION STATUS: <span class="text-red-600">CLOSED</span>
+    </h1>
+    <div class="mt-8">
+      <a
+        href="/"
+        class="block px-4 py-3 text-center font-semibold bg-black text-xl text-white"
+        >GO BACK</a
+      >
+    </div>
+  </div>
 </MyLayout>
 
 <style>
-    .custom-shadow{
-      box-shadow: 0.2rem 0.2rem 0rem #000000;
-    }
-  </style>
+  .custom-shadow {
+    box-shadow: 0.2rem 0.2rem 0rem #000000;
+  }
+
+  .note-shadow {
+    box-shadow:
+      0.2rem 0.2rem 0rem rgb(234 179 8),
+      0.4rem 0.4rem 0rem rgb(133 77 14);
+  }
+
+  .custom-disc li {
+    position: relative;
+    margin-left: 1.5rem;
+  }
+
+  .custom-disc li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -1.5rem;
+    transform: translateY(-50%) rotate(45deg);
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+    border: 0.25rem solid #000000;
+  }
+</style>

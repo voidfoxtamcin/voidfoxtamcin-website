@@ -1,4 +1,6 @@
 ---
+import {ViewTransitions} from 'astro:transitions'
+
 const { title } = Astro.props;
 const base = import.meta.env.DEV ? Astro.url.origin : 'https://voidfoxtamcin.vercel.app';
 const ogImage = new URL('/img/og_image.png', base)
@@ -12,10 +14,15 @@ const ogImage = new URL('/img/og_image.png', base)
     <meta property="og:title" content="Voidfoxtamcin's Website" />
     <meta property="og:description" content="Voidfoxtamcin's Website" />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={base} />
     <meta property="og:type" content="website" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body class="min-h-screen bg-white">
     <slot />
