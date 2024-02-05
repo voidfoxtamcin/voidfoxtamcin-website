@@ -53,24 +53,26 @@ let images: Image[] = [
   <div class="container mx-auto border-x-2 border-black">
   <div class="py-16">
       <hr class="border-t-2 border-black">
-      <h1 class="text-5xl font-black italic text-center mt-4">! FINISHED ART !</h1>
+      <h1 class="text-2xl md:text-5xl font-black italic text-center mt-4">! FINISHED ART !</h1>
       <hr class="border-t-2 border-black mt-4">
     </div>
     
     <div class="pb-16">
-      <div class="columns-2 md:columns-3 lg:columns-4 px-4">
+      <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 px-4">
         {
           images.map((img: Image, index: number) => (
-            <img
-            src={"img/" + img.src}
+            <Image
+            src={"/img/" + img.src}
             alt={"protofolio image " + index + 1}
-            class="mb-4 border-2 border-black custom-shadow"
+            width={128}
+            height={128}
+            class="mb-4 border-2 border-black custom-shadow w-full"
             />
             ))
           }
     </div>
     <div class="mt-8">
-      <a href="/" class="block px-4 py-3 text-center font-semibold bg-black text-xl text-white">GO BACK</a>
+      <a href="/" class="block px-4 py-3 text-center font-semibold bg-black md:text-xl text-white">GO BACK</a>
     </div>
   </div>
 </div>

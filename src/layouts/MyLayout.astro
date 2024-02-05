@@ -1,5 +1,7 @@
 ---
+import '../css/style.css'
 import {ViewTransitions} from 'astro:transitions'
+import DarkModeToggle from '../components/DarkModeToggle.svelte'
 
 const { title } = Astro.props;
 const base = import.meta.env.DEV ? Astro.url.origin : 'https://voidfoxtamcin.vercel.app';
@@ -7,7 +9,7 @@ const ogImage = new URL('/img/og_image.png', base)
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,9 +26,7 @@ const ogImage = new URL('/img/og_image.png', base)
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="min-h-screen bg-white">
+  <body class="min-h-screen bg-slate-50">
     <slot />
-
-    <!-- <button class="absolute bottom-8 right-8 w-12 h-12 bg-slate-900 rounded-full border-2"></button> -->
   </body>
 </html>
