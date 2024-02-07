@@ -1,52 +1,11 @@
 ---
 import MyLayout from "@/layouts/MyLayout.astro";
 import { Image } from "astro:assets";
+import {GET} from "@/pages/api/gallery.json.ts";
+import type {Images as ImagesType, Image as ImageType} from "@/lib/types";
 
-type Image = {
-  src: string;
-};
-
-let images: Image[] = [
-  {
-    src: "cahya.png",
-  },
-  {
-    src: "Blunt.png",
-  },
-  {
-    src: "buff bread.png",
-  },
-  {
-    src: "boyolali - Resized.png",
-  },
-  {
-    src: "Gamma Scary.png",
-  },
-  {
-    src: "Hmm.png",
-  },
-  {
-    src: "Pec 6.png",
-  },
-  {
-    src: "Tamcin.png",
-  },
-  {
-    src: "derg-yanara.png",
-  },
-  {
-    src: "espio.png",
-  },
-  {
-    src: "sprit-tamcin.png",
-  },
-  {
-    src: "betelgamma 3.png"
-  },
-  {
-    src: "Azzy.png",
-  },
-];
+let response = await GET(Astro);
+const data: ImagesType = await response.json();
 ---
 
 <MyLayout title="My Portofolio!">
@@ -60,7 +19,7 @@ let images: Image[] = [
     <div class="pb-16">
       <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 px-4">
         {
-          images.map((img: Image, index: number) => (
+          data.images.map((img: ImageType, index: number) => (
             <Image
             src={"/img/" + img.src}
             alt={"protofolio image " + index + 1}
