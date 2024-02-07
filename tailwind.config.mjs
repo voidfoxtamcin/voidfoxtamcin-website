@@ -6,7 +6,15 @@ export default {
 		fontFamily: {
 			honk: ['Honk', 'sans-serif'],
 		},
-		extend: {},
+		extend: {
+			colors: {
+				'text': 'hsl(325, 94%, 6%)',
+				'background': 'hsl(330, 100%, 98%)',
+				'primary': 'hsl(332, 95%, 51%)',
+				'secondary': 'hsl(23, 95%, 71%)',
+				'accent': 'hsl(40, 96%, 65%)',
+			},
+		},
 	},
 	plugins: [
 		require('@tailwindcss/typography')

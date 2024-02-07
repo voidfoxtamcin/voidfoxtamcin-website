@@ -1,5 +1,5 @@
 ---
-import MyLayout from "../layouts/MyLayout.astro";
+import MyLayout from "@/layouts/MyLayout.astro";
 import { Image } from "astro:assets";
 
 type Image = {
@@ -64,9 +64,11 @@ let images: Image[] = [
             <Image
             src={"/img/" + img.src}
             alt={"protofolio image " + index + 1}
-            width={128}
+            width={256}
             height={128}
-            class="mb-4 border-2 border-black custom-shadow w-full"
+            loading={"lazy"}
+            quality={'low'}
+            class="mb-4 border-2 border-black custom-shadow min-w-full"
             />
             ))
           }
