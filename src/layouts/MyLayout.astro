@@ -28,5 +28,13 @@ const ogImage = new URL('/img/og_image.png', base)
   </head>
   <body class="min-h-screen bg-slate-50">
     <slot />
+
+    <script>
+      let goBackBtn: HTMLButtonElement = document.querySelector("#goBack")!;
+      goBackBtn.addEventListener("click", () => {
+        window.history.go(-1);
+      });
+    </script>
   </body>
 </html>
+
