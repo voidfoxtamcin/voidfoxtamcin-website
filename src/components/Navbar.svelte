@@ -1,3 +1,5 @@
+<script lang="ts"></script>
+
 <nav class="border-b-2 border-text">
   <div class="container mx-auto flex justify-between items-center py-4">
     <a href="/" class="inline-block font-bold text-xl text-text"
