@@ -4,9 +4,10 @@ import {ViewTransitions} from 'astro:transitions'
 // @ts-ignore
 import Navbar from '@/components/Navbar.svelte';
 
-const { title } = Astro.props;
+const { title, image, slug } = Astro.props;
 const base = import.meta.env.DEV ? Astro.url.origin : 'https://voidfoxtamcin.vercel.app';
-const ogImage = new URL('/img/og_image.png', base)
+const currentUrl = `${base}/blog/${slug}`;
+const ogImage = new URL(image, base)
 ---
 
 <!doctype html>
@@ -17,7 +18,8 @@ const ogImage = new URL('/img/og_image.png', base)
     <meta property="og:title" content="Voidfoxtamcin's Website" />
     <meta property="og:description" content="Voidfoxtamcin's Website" />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={base} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:url" content={currentUrl} />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:title" content={title}/>

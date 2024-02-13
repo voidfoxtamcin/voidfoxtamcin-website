@@ -18,6 +18,11 @@ const ogImage = new URL('/img/og_image.png', base)
     <meta property="og:url" content={base} />
     <meta property="og:type" content="website" />
 
+    <meta name="twitter:title" content={title}/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content={ogImage}/>
+    <meta name="twitter:domain" content={import.meta.env.SITE}/>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Honk&family=Noto+Sans+JP&display=swap" rel="stylesheet">
