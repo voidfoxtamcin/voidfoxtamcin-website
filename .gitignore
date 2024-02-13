@@ -21,4 +21,4 @@ pnpm-debug.log*
 .DS_Store
 
 # custom directories
-_nottracked/
+# src/nottracked/
