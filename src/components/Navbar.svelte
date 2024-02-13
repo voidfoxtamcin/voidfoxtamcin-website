@@ -1,6 +1,6 @@
 <script lang="ts"></script>
 
-<nav class="border-b-2 border-text">
+<nav class="border-b-2 border-text px-4">
   <div class="container mx-auto flex justify-between items-center py-4">
     <a href="/blog" class="inline-block font-bold text-xl text-text"
       >Tamcin's Blog</a
