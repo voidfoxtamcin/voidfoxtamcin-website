@@ -1,18 +1,20 @@
 <script lang="ts"></script>
 
-<nav class="border-b-2 border-text px-4">
+<nav class=" px-4 bg-slate-700">
   <div class="container mx-auto flex justify-between items-center py-4">
-    <a href="/blog" class="inline-block font-bold text-xl text-text"
+    <a href="/blog" class="inline-block font-bold text-xl text-slate-100"
       >Tamcin's Blog</a
     >
     <div class="flex gap-x-6">
       <a
         href="/"
-        class="inline-block font-semibold text-text hover:text-blue-600">Home</a
+        class="inline-block font-semibold text-slate-100 hover:text-blue-600"
+        >Home</a
       >
       <a
         href="/blog"
-        class="inline-block font-semibold text-text hover:text-blue-600">Blog</a
+        class="inline-block font-semibold text-slate-100 hover:text-blue-600"
+        >Blog</a
       >
     </div>
   </div>

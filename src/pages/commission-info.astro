@@ -1,76 +1,73 @@
 ---
-import MyLayout from "../layouts/MyLayout.astro";
+import MyLayout from "@/layouts/MyLayout.astro";
 import { Image } from "astro:assets";
-import commsPrice from "../img/comms-price.jpg";
+import commsPrice from "@/img/comms-price.jpg";
 let isCommissionOpen = false;
 ---
 
-<MyLayout title="Commission Info!">
+<MyLayout title="Commission Info!" bgClass="bg-slate-900">
   <div class="container mx-auto py-8 px-4">
-    <hr class="border-2 border-black my-8" />
-    <h1 class="text-2xl md:text-5xl font-black italic text-center mb-8">
-      &star; TERMS <span class="text-blue-800">OF</span> SERVICE &star;
-    </h1>
+    <h1 class="text-3xl md:text-6xl font-black text-slate-200 text-center mb-4">COMMISSION INFO</h1>
     <div class="grid md:grid-cols-2 gap-4">
-      <div class="border-2 border-black custom-shadow bg-white">
+      <div class="bg-green-500 border-2 border-green-500 bg-opacity-20 rounded-lg overflow-hidden">
         <p
-          class="border-b-2 border-black px-4 py-3 bg-green-50 text-green-700 text-center text-xl font-bold"
+          class="border-b-2 border-green-500 px-4 py-3 bg-green-500 bg-opacity-50 text-green-200 text-center text-xl font-bold"
         >
           &check; I WILL DO
         </p>
         <div class="p-4">
-          <ul class="md:text-xl font-semibold list-inside list-disc">
-            <li><span class="bg-green-100">Furry</span></li>
-            <li><span class="bg-green-100">Humans</span></li>
-            <li><span class="bg-green-100">Mobian</span></li>
-            <li><span class="bg-green-100">Original Characters</span></li>
-            <li><span class="bg-green-100">Suggestive</span></li>
+          <ul class="md:text-xl font-semibold list-inside list-disc text-green-400">
+            <li><span class="">Furry</span></li>
+            <li><span class="">Humans</span></li>
+            <li><span class="">Mobian</span></li>
+            <li><span class="">Original Characters</span></li>
+            <li><span class="">Suggestive</span></li>
           </ul>
         </div>
       </div>
-      <div class="border-2 border-black custom-shadow bg-white">
+      <div class="border-2 border-red-500 bg-red-500 bg-opacity-20 rounded-lg overflow-hidden">
         <p
-          class="border-b-2 border-black px-4 py-3 bg-red-50 text-red-700 text-center text-xl font-bold"
+          class="border-b-2 border-red-500 px-4 py-3 bg-red-500 bg-opacity-50 text-red-200 text-center text-xl font-bold"
         >
           &cross; I WON'T DO
         </p>
         <div class="p-4">
-          <ul class="md:text-xl font-semibold list-inside list-disc">
-            <li><span class="bg-red-100">NSFW / Gore</span></li>
-            <li><span class="bg-red-100">Mecha</span></li>
-            <li><span class="bg-red-100">Complicated Design</span></li>
-            <li><span class="bg-red-100">Political Related</span></li>
-            <li><span class="bg-red-100">Hate Speech</span></li>
+          <ul class="md:text-xl font-semibold list-inside list-disc text-red-400">
+            <li><span class="">NSFW / Gore</span></li>
+            <li><span class="">Mecha</span></li>
+            <li><span class="">Complicated Design</span></li>
+            <li><span class="">Political Related</span></li>
+            <li><span class="">Hate Speech</span></li>
           </ul>
         </div>
       </div>
     </div>
 
-    <hr class="border-2 border-black my-8" />
+    <hr class="border-2 border-slate-700 my-8" />
 
     <div class="grid lg:grid-cols-2 gap-4 items-center">
       <div>
-        <h1 class="text-2xl md:text-5xl font-black italic text-center mb-8">
+        <h1 class="text-2xl md:text-5xl font-black italic text-center text-slate-200 mb-8">
           &star; COMMISSION PRICE &star;
         </h1>
         <Image
           src={commsPrice}
           alt={"comms price"}
-          class="max-w-2xl w-full mx-auto border-2 border-black custom-shadow"
+          class="max-w-2xl w-full mx-auto rounded-lg"
         />
       </div>
       <div>
-        <div class="bg-yellow-100 border-2 border-black px-4 py-3 note-shadow mb-4">
-          <h2 class="text-2xl md:text-4xl font-black italic mb-6">! Notes</h2>
-          <ul class="md:text-xl font-semibold custom-disc list-inside">
+        <div class="bg-yellow-500 bg-opacity-20 border-2 border-yellow-500 rounded-lg px-4 py-3 mb-4">
+          <h2 class="text-2xl md:text-4xl font-black italic mb-6 text-yellow-500">! Notes</h2>
+          <ul class="md:text-xl font-semibold custom-disc list-inside text-yellow-500">
             <li>Additional characters +50% from the base price.</li>
-            <li>Payment via <span class="bg-blue-200">PayPal in USD</span></li>
-            <li>Complex background <span class="bg-blue-200">+$10</span></li>
+            <li>Payment via <span class="bg-yellow-500 bg-opacity-20">PayPal in USD</span></li>
+            <li>Complex background <span class="bg-yellow-500 bg-opacity-20">+$10</span></li>
           </ul>
         </div>
-        <div class="bg-yellow-100 border-2 border-black px-4 py-3 note-shadow">
-          <h2 class="text-2xl md:text-4xl font-black italic mb-6">! Contacts</h2>
-          <ul class="md:text-xl font-semibold custom-disc list-inside">
+        <div class="bg-yellow-500 bg-opacity-20 border-2 border-yellow-500 rounded-lg px-4 py-3 mb-4">
+          <h2 class="text-2xl md:text-4xl font-black italic mb-6 text-yellow-500">! Contacts</h2>
+          <ul class="md:text-xl font-semibold custom-disc list-inside text-yellow-500">
             <li>Discord: voidfoxtamcin</li>
             <li>Telegram: voidfoxtamcin</li>
           </ul>
@@ -78,15 +75,15 @@ let isCommissionOpen = false;
       </div>
     </div>
 
-    <hr class="border-2 border-black my-8" />
+    <hr class="border-2 border-slate-700 my-8" />
 
-    <h1 class="text-2xl md:text-5xl font-black italic text-center my-8">
-      COMMISSION STATUS: {isCommissionOpen ? <span class="text-green-600">OPEN</span> : <span class="text-red-600">CLOSED</span>}
+    <h1 class="text-2xl md:text-5xl font-black italic text-center my-8 text-slate-200">
+      COMMISSION STATUS: {isCommissionOpen ? <span class="text-green-500">OPEN</span> : <span class="text-red-500">CLOSED</span>}
     </h1>
     <div class="mt-8">
       <button
           onclick="goBack()"
-          class="block w-full px-4 py-3 text-center font-semibold bg-black md:text-xl text-white"
+          class="block w-full px-4 py-3 text-center font-semibold bg-slate-700 rounded-lg mt-4 md:text-xl text-white"
           >GO BACK</button>
       </div>
     </div>
@@ -121,10 +118,10 @@ let isCommissionOpen = false;
     top: 50%;
     left: -1.5rem;
     transform: translateY(-50%) rotate(45deg);
-    width: 1rem;
-    height: 1rem;
-    background-color: white;
-    border: 0.25rem solid #000000;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: transparent;
+    border: 0.25rem solid rgb(234 179 8);
   }
 </style>
 
