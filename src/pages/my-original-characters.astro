@@ -22,7 +22,7 @@ const ocs: CollectionEntry<"oc">[] = await getCollection("oc");
 
               <div class="flex flex-row items-start justify-start overflow-x-auto gap-x-4 py-4">
                 {oc.data.images.map((img) => (
-                  <Image src={img} alt={oc.data.name} width={512} height={512} class="block object-contain h-80" />
+                  <img src={img} alt={oc.data.name} class="block object-contain h-80 rounded-lg" />
                 ))}
                 </div>
             </div>
