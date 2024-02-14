@@ -1,0 +1,45 @@
+---
+import MyLayout from "@/layouts/MyLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const ocs: CollectionEntry<"oc">[] = await getCollection("oc");
+---
+
+<MyLayout title="My Original Charaters!" bgClass="bg-slate-900">
+  <div class="container mx-auto">
+    <div class="py-8 px-4">
+      <h1 class="text-3xl md:text-6xl font-black text-white text-center">
+        MY ORIGINAL CHARACTERS
+      </h1>
+
+      <div class="my-8">
+        {
+          ocs.map((oc) => (
+            <div class="grid md:grid-cols-4 place-items-center mb-4 bg-slate-700 p-4 rounded-lg">
+              <div class="col-span-2">
+                <img
+                  src={oc.data.image}
+                  class="aspect-video rounded-lg object-cover object-top w-full"
+                />
+              </div>
+              <div class="col-span-2">
+                <p class="text-white text-3xl font-black mt-4 md:mt-0">{oc.data.name}</p>
+                </div>
+            </div>
+          ))
+        }
+      </div>
+      <button
+            onclick="goBack()"
+            class="block w-full px-4 py-3 text-center font-semibold bg-slate-700 rounded-lg mt-4 md:text-xl text-white"
+            >GO BACK</button>
+    </div>
+
+  </div>
+</MyLayout>
+
+<script is:inline>
+  function goBack(){
+    window.history.back();
+  }
+</script>

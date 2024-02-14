@@ -1,0 +1,45 @@
+---
+export const prerender = true;
+
+import type { GetStaticPaths } from "astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+// @ts-ignore
+import Header from "@/components/Header.svelte";
+// @ts-ignore
+import NotFoundPage from "@/components/404.svelte";
+import { Image } from "astro:assets";
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = {
+  post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props;
+const image = post.data.image || "/img/og_image.png";
+const { Content } = await post.render();
+
+---
+<ContentLayout title="Blog" image={image} slug={post.slug}>
+  {post.data.published == true && <div class="container mx-auto py-16">
+    <Header title={post.data.title}></Header>
+    <!-- <hr class="border-b-2 border-black" />
+    <h1 class="text-center text-5xl font-black italic my-8" transition:name="heading">
+      {post.data.title}
+    </h1>
+    <hr class="border-b-2 border-black" /> -->
+  </div>
+
+  
+  <div class="prose prose-invert prose-blue prose-lg mx-auto max-w-6xl py-4 px-8 w-full pb-16">
+    {post.data.image && <Image src={post.data.image!} alt={post.data.title} width={512} height={512} class="w-full object-cover" />}
+    <Content />
+  </div>}
+</ContentLayout>

@@ -1,0 +1,47 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+const posts: CollectionEntry<'blog'>[] = await getCollection("blog");
+---
+
+<BlogLayout title="Blog">
+  <div class="container mx-auto py-16">
+    <hr class="border-b-2 border-slate-700" />
+    <h1 class="text-center text-5xl font-black italic my-8 text-slate-100">
+      &sstarf; Tamcin's Blog &sstarf;
+    </h1>
+    <hr class="border-b-2 border-slate-700" />
+
+    <div class="my-8">
+      {
+        posts.map((post) => post.data.published && (
+          <article class="px-4 py-3 bg-blue-500 bg-opacity-20 border-2 border-blue-500 rounded-lg">
+            <a href={"/blog/" + post.slug}>
+              <h1
+                class="text-3xl font-black text-slate-100 hover:text-blue-400 inline-block"
+              >
+              <Icon name={'mdi:link-variant'} class={'inline'} />  
+              {post.data.title}
+              </h1>
+            </a>
+            <p class="font-semibold mt-4 text-slate-100">
+              Created at:{" "}
+              <time datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString(undefined, {
+                  dateStyle: "medium",
+                  timeZone: "GMT",
+                })}
+              </time>
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+		<div class="bg-grid grid grid-cols-8 grid-rows-6 border-b-1 border-gray-300 bg-grid-gray-300 dark:border-gray-700 dark:bg-grid-gray-700 lg:grid-cols-16 lg:grid-rows-8"></div>
+
+    <!-- <Image src={"/img/Pec 6.png"} alt={"Profile"} width={200} height={200} /> -->
+  </div>
+</BlogLayout>
