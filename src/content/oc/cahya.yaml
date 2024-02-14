@@ -2,4 +2,8 @@ name: Cahya
 gender: Male
 species: Spirit Tree
 description: Cahya is a very-active and happy spirit tree.
-image: /img/cahya.png
+image: /img/ocs/cahya1.png
+images:
+  - /img/ocs/cahya1.png
+  - /img/ocs/cahya2.png
+  - /img/ocs/cahya3.png

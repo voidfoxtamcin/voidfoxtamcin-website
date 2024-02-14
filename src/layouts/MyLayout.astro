@@ -2,9 +2,9 @@
 import '../css/style.css'
 import {ViewTransitions} from 'astro:transitions'
 
-const { title, bgClass } = Astro.props;
+const { title, desc, bgClass, image } = Astro.props;
 const base = import.meta.env.DEV ? Astro.url.origin : 'https://voidfoxtamcin.vercel.app';
-const ogImage = new URL('/img/og_image.png', base)
+const ogImage = new URL(image || '/img/og_image.png', base)
 ---
 
 <!doctype html>
@@ -12,8 +12,8 @@ const ogImage = new URL('/img/og_image.png', base)
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="Voidfoxtamcin's Website" />
-    <meta property="og:description" content="Voidfoxtamcin's Website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc || 'Voidfoxtamcin\'s Website'} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={base} />
     <meta property="og:type" content="website" />

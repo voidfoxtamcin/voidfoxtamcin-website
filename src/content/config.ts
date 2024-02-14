@@ -18,7 +18,8 @@ const ocCollection = defineCollection({
         gender: z.string(),
         species: z.string(),
         image: z.string(),
-        description: z.string()
+        description: z.string(),
+        images: z.array(z.string())
     })
 })
 

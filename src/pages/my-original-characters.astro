@@ -1,11 +1,12 @@
 ---
 import MyLayout from "@/layouts/MyLayout.astro";
+import {Image} from "astro:assets"
 import { getCollection, type CollectionEntry } from "astro:content";
 
 const ocs: CollectionEntry<"oc">[] = await getCollection("oc");
 ---
 
-<MyLayout title="My Original Charaters!" bgClass="bg-slate-900">
+<MyLayout title="My Original Charaters!" desc="Place to find all of my original characters in here!" image="/img/og/my-original-characters.png" bgClass="bg-slate-900">
   <div class="container mx-auto">
     <div class="py-8 px-4">
       <h1 class="text-3xl md:text-6xl font-black text-white text-center">
@@ -15,15 +16,14 @@ const ocs: CollectionEntry<"oc">[] = await getCollection("oc");
       <div class="my-8">
         {
           ocs.map((oc) => (
-            <div class="grid md:grid-cols-4 place-items-center mb-4 bg-slate-700 p-4 rounded-lg">
-              <div class="col-span-2">
-                <img
-                  src={oc.data.image}
-                  class="aspect-video rounded-lg object-cover object-top w-full"
-                />
-              </div>
-              <div class="col-span-2">
-                <p class="text-white text-3xl font-black mt-4 md:mt-0">{oc.data.name}</p>
+            <div class="mb-4 bg-slate-800 p-4 rounded-lg">
+              <p class="text-4xl text-center font-bold text-white">{oc.data.name}</p>
+              <p class="text-xl text-center font-semibold text-white">{oc.data.description}</p>
+
+              <div class="flex flex-row items-start justify-start overflow-x-auto gap-x-4 py-4">
+                {oc.data.images.map((img) => (
+                  <Image src={img} alt={oc.data.name} width={512} height={512} class="block object-contain h-80" />
+                ))}
                 </div>
             </div>
           ))
