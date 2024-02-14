@@ -84,13 +84,20 @@ let isCommissionOpen = false;
       COMMISSION STATUS: {isCommissionOpen ? <span class="text-green-600">OPEN</span> : <span class="text-red-600">CLOSED</span>}
     </h1>
     <div class="mt-8">
-      <a
-        href="/"
-        class="block w-full px-4 py-3 text-center font-semibold bg-black md:text-xl text-white"
-        >GO BACK</a>
+      <button
+          onclick="goBack()"
+          class="block w-full px-4 py-3 text-center font-semibold bg-black md:text-xl text-white"
+          >GO BACK</button>
+      </div>
     </div>
   </div>
 </MyLayout>
+
+<script is:inline>
+  function goBack(){
+    window.history.back();
+  }
+</script>
 
 <style>
   .custom-shadow {

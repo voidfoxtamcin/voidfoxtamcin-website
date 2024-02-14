@@ -2,7 +2,7 @@
 import '../css/style.css'
 import {ViewTransitions} from 'astro:transitions'
 
-const { title } = Astro.props;
+const { title, bgClass } = Astro.props;
 const base = import.meta.env.DEV ? Astro.url.origin : 'https://voidfoxtamcin.vercel.app';
 const ogImage = new URL('/img/og_image.png', base)
 ---
@@ -30,15 +30,8 @@ const ogImage = new URL('/img/og_image.png', base)
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="min-h-screen bg-slate-50">
+  <body class={`min-h-screen ${bgClass}`}>
     <slot />
-
-    <script>
-      let goBackBtn: HTMLButtonElement = document.querySelector("#goBack")!;
-      goBackBtn.addEventListener("click", () => {
-        window.history.go(-1);
-      });
-    </script>
   </body>
 </html>
 

@@ -35,15 +35,20 @@ const data: ImagesType = await response.json();
         }
       </div>
       <div class="mt-8">
-        <a
-          href="/"
+        <button
+          onclick="goBack()"
           class="block w-full px-4 py-3 text-center font-semibold bg-black md:text-xl text-white"
-          >GO BACK</a
-        >
+          >GO BACK</button>
       </div>
     </div>
   </div>
 </MyLayout>
+
+<script is:inline>
+  function goBack(){
+    window.history.back();
+  }
+</script>
 
 <style>
   .custom-shadow {
