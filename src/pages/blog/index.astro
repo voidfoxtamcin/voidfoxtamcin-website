@@ -4,6 +4,8 @@ import BlogLayout from "@/layouts/BlogLayout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 const posts: CollectionEntry<'blog'>[] = await getCollection("blog");
+// @ts-ignore
+const sortedPosts = posts.sort((a, b) => b.data.date -  a.data.date)
 ---
 
 <BlogLayout title="Blog">
@@ -16,8 +18,8 @@ const posts: CollectionEntry<'blog'>[] = await getCollection("blog");
 
     <div class="my-8">
       {
-        posts.map((post) => post.data.published && (
-          <article class="px-4 py-3 bg-blue-500 bg-opacity-20 border-2 border-blue-500 rounded-lg">
+        sortedPosts.map((post) => post.data.published && (
+          <article class="px-4 py-3 bg-blue-500 bg-opacity-20 border-2 border-blue-500 rounded-lg mb-4">
             <a href={"/blog/" + post.slug}>
               <h1
                 class="text-3xl font-black text-slate-100 hover:text-blue-400 inline-block"
