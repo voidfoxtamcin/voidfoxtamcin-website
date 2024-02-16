@@ -6,7 +6,7 @@ type Image = {
 
 let images: Image[] = [
   {
-    src: "cahya.png",
+    src: "ocs/cahya1.png",
   },
   {
     src: "Blunt.png",
@@ -21,13 +21,16 @@ let images: Image[] = [
     src: "Gamma Scary.png",
   },
   {
-    src: "Hmm.png",
+    src: "ocs/voidfox2.png",
+  },
+  {
+    src: "ocs/voidfox3.png",
   },
   {
     src: "Pec 6.png",
   },
   {
-    src: "Tamcin.png",
+    src: "ocs/voidfox1.png",
   },
   {
     src: "derg-yanara.png",
@@ -36,7 +39,7 @@ let images: Image[] = [
     src: "espio.png",
   },
   {
-    src: "sprit-tamcin.png",
+    src: "ocs/spirit1.png",
   },
   {
     src: "betelgamma 3.png"
@@ -46,7 +49,10 @@ let images: Image[] = [
   },
   {
     src: "Towai.png"
-  }
+  },
+  {
+    src: "ocs/void2.png",
+  },
 ];
 
 export const GET: APIRoute = () => {

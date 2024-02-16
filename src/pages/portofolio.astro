@@ -17,7 +17,7 @@ const data: ImagesType = await response.json();
         data.images.map((img: ImageType, index: number) => (
           <Image
             src={"/img/" + img.src}
-            alt={"protofolio image " + index + 1}
+            alt={`protofolio image ${img.src}`}
             width={256}
             height={128}
             loading={"lazy"}
