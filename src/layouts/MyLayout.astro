@@ -1,6 +1,5 @@
 ---
 import '../css/style.css'
-import {ViewTransitions} from 'astro:transitions'
 
 const { title, desc, bgClass, image } = Astro.props;
 const base = import.meta.env.DEV ? Astro.url.origin : 'https://voidfoxtamcin.vercel.app';
@@ -28,7 +27,6 @@ const ogImage = new URL(image || '/img/og_image.png', base)
     <link href="https://fonts.googleapis.com/css2?family=Honk&family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
     <title>{title}</title>
-    <ViewTransitions />
   </head>
   <body class={`min-h-screen ${bgClass}`}>
     <slot />

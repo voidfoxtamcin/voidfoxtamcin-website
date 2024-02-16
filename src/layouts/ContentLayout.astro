@@ -1,6 +1,5 @@
 ---
 import '../css/style.css'
-import {ViewTransitions} from 'astro:transitions'
 // @ts-ignore
 import Navbar from '@/components/Navbar.svelte';
 
@@ -32,7 +31,6 @@ const ogImage = new URL(image, base)
     <link href="https://fonts.googleapis.com/css2?family=Honk&family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
     <title>{title}</title>
-    <ViewTransitions />
   </head>
   <body class="min-h-screen bg-slate-900">
     <Navbar />
