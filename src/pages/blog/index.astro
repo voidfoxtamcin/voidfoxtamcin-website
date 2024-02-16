@@ -16,11 +16,13 @@ const sortedPosts = posts.sort((a, b) => b.data.date -  a.data.date)
     </h1>
     <hr class="border-b-2 border-slate-700" />
 
-    <div class="my-8">
+    <div class="grid grid-cols-3 gap-8 my-8">
       {
         sortedPosts.map((post) => post.data.published && (
-          <article class="px-4 py-3 bg-blue-500 bg-opacity-20 border-2 border-blue-500 rounded-lg mb-4">
-            <a href={"/blog/" + post.slug}>
+          <article class="bg-blue-500 bg-opacity-20 border-2 border-blue-500 rounded-lg mb-4 overflow-hidden">
+            <img src={`${post.data.image || "/img/og_image.png"}`} alt={`Image Header of: ${post.data.title}`} class="aspect-video object-cover"  />
+            <div class="content p-4">
+              <a href={"/blog/" + post.slug}>
               <h1
                 class="text-3xl font-black text-slate-100 hover:text-blue-400 inline-block"
               >
@@ -36,7 +38,7 @@ const sortedPosts = posts.sort((a, b) => b.data.date -  a.data.date)
                   timeZone: "GMT",
                 })}
               </time>
-            </p>
+            </p></div>
           </article>
         ))
       }
