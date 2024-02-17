@@ -17,12 +17,10 @@ const data: ImagesType = await response.json();
         data.images.map((img: ImageType, index: number) => (
           <Image
             src={"/img/" + img.src}
-            format="webp"
+            format="png"
             alt={`protofolio image ${img.src}`}
             width={768}
             height={768}
-            loading={"eager"}
-            quality={"high"}
             class="mb-4 rounded-lg min-w-full"
           />
         ))
