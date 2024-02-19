@@ -2,7 +2,8 @@
 import DarkLightToggler from "@/components/DarkLightToggler.svelte";
 
 const {title, description, image} = Astro.props;
-const ogImage = new URL(image || '/img/ogImage.png', Astro.url.origin);
+const base = import.meta.env.DEV ? Astro.url.origin : 'https://voidfoxtamcin.vercel.app';
+const ogImage = new URL(image || '/img/ogImage.png', base);
 ---
 
 <!DOCTYPE html>
