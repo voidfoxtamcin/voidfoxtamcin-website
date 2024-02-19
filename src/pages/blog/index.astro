@@ -1,51 +1,83 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import BlogLayout from "@/layouts/BlogLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Navbar from "@/components/Navbar.astro";
 import { Image } from "astro:assets";
+import { type CollectionEntry, getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
-const posts: CollectionEntry<'blog'>[] = await getCollection("blog");
-// @ts-ignore
-const sortedPosts = posts.sort((a, b) => b.data.date -  a.data.date)
+
+const blogCollection: CollectionEntry<"blog">[] = await getCollection("blog");
+
+function convertDate(date: Date) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthIndex = date.getMonth();
+  const day = date.getDate();
+  const year = date.getFullYear();
+
+  const formattedDate = months[monthIndex] + " " + day + ", " + year;
+  return formattedDate;
+
+}
+const sortedBlog = blogCollection.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
 ---
 
-<BlogLayout title="Blog">
-  <div class="container mx-auto py-16">
-    <hr class="border-b-2 border-slate-700" />
-    <h1 class="text-center text-5xl font-black italic my-8 text-slate-100">
-      &sstarf; Tamcin's Blog &sstarf;
-    </h1>
-    <hr class="border-b-2 border-slate-700" />
+<BaseLayout
+  title="Blog"
+  description="In this page, you can see all of articles that I made. Either a personal info or some important info."
+>
+  <Navbar />
+  <div
+    class="min-h-screen p-8 flex flex-col gap-8 items-start font-anta max-w-3xl mx-auto dark:text-slate-400 text-slate-600"
+  >
+    <section>
+      <!-- <button id="goBack" class="px-3 py-2 rounded border border-slate-400 text-slate-400 inline-block mb-4 hover:bg-slate-400 hover:text-slate-800 text-base cursor-pointer">Go Back</button> -->
+      <h1
+        class="text-2xl dark:text-white text-slate-800 font-semibold uppercase"
+      >
+        Blog
+      </h1>
+    </section>
 
-    <div class="grid grid-cols-3 gap-8 my-8">
+    <div class="flex flex-col gap-4 w-full">
       {
-        sortedPosts.map((post) => post.data.published && (
-          <article class="bg-blue-500 bg-opacity-20 border-2 border-blue-500 rounded-lg mb-4 overflow-hidden">
-            <img src={`${post.data.image || "/img/og_image.png"}`} alt={`Image Header of: ${post.data.title}`} class="aspect-video object-cover"  />
-            <div class="content p-4">
-              <a href={"/blog/" + post.slug}>
-              <h1
-                class="text-3xl font-black text-slate-100 hover:text-blue-400 inline-block"
-              >
-              <Icon name={'mdi:link-variant'} class={'inline'} />  
-              {post.data.title}
-              </h1>
-            </a>
-            <p class="font-semibold mt-4 text-slate-100">
-              Created at:{" "}
-              <time datetime={post.data.date.toISOString()}>
-                {post.data.date.toLocaleDateString(undefined, {
-                  dateStyle: "medium",
-                  timeZone: "GMT",
-                })}
-              </time>
-            </p></div>
+        sortedBlog.map((blog) => (
+          <article class="border dark:border-slate-600 border-slate-200 block p-2 rounded">
+            <div class="md:flex justify-between items-start">
+              <h2 class="underline">
+                <a href={`/blog/${blog.slug}`}>
+                <Icon name={'mdi:link'} class={'inline-block'} />
+                {blog.data.title}
+              </a>
+                </h2>
+              <p>
+                <Icon name={'mdi:calendar'} class={'inline-block'} />
+                <span>{convertDate(blog.data.date)}</span>
+              </p>
+            </div>
           </article>
         ))
       }
     </div>
-
-		<div class="bg-grid grid grid-cols-8 grid-rows-6 border-b-1 border-gray-300 bg-grid-gray-300 dark:border-gray-700 dark:bg-grid-gray-700 lg:grid-cols-16 lg:grid-rows-8"></div>
-
-    <!-- <Image src={"/img/Pec 6.png"} alt={"Profile"} width={200} height={200} /> -->
   </div>
-</BlogLayout>
+</BaseLayout>
+
+<script>
+  const goBack_btn: HTMLButtonElement = document.getElementById(
+    "goBack"
+  ) as HTMLButtonElement;
+  goBack_btn.addEventListener("click", function () {
+    window.history.back();
+  });
+</script>

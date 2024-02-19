@@ -1,45 +1,35 @@
 ---
 export const prerender = true;
-
+import Navbar from "@/components/Navbar.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { GetStaticPaths } from "astro";
-import ContentLayout from "../../layouts/ContentLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
-// @ts-ignore
-import Header from "@/components/Header.svelte";
-// @ts-ignore
-import NotFoundPage from "@/components/404.svelte";
 import { Image } from "astro:assets";
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  const blogs = await getCollection("blog");
+  return  blogs.map((blog) => ({
+    params: {slug: blog.slug},
+    props: {blog}
+  }))
 }) satisfies GetStaticPaths;
 
 type Props = {
-  post: CollectionEntry<"blog">;
-};
+  blog: CollectionEntry<"blog">
+}
 
-const { post } = Astro.props;
-const image = post.data.image || "/img/og_image.png";
-const { Content } = await post.render();
-
+const {blog} = Astro.props;
+const {Content} = await blog.render();
 ---
-<ContentLayout title="Blog" image={image} slug={post.slug}>
-  {post.data.published == true && <div class="container mx-auto py-16">
-    <Header title={post.data.title}></Header>
-    <!-- <hr class="border-b-2 border-black" />
-    <h1 class="text-center text-5xl font-black italic my-8" transition:name="heading">
-      {post.data.title}
-    </h1>
-    <hr class="border-b-2 border-black" /> -->
-  </div>
 
-  
-  <div class="prose prose-invert prose-blue prose-lg mx-auto max-w-6xl py-4 px-8 w-full pb-16">
-    {post.data.image && <Image src={post.data.image!} alt={post.data.title} width={512} height={512} class="w-full object-cover" />}
-    <Content />
-  </div>}
-</ContentLayout>
+<BaseLayout title={`${blog.data.title}`} description={blog.data.description}>
+  <Navbar />
+
+  <div class="min-h-screen py-8 px-4">
+    <div class="prose font-anta dark:prose-invert mx-auto prose-blue">
+      <Image src={`/img/content/${blog.data.image}`} alt={'Header Pitcure of ' + blog.data.title} width={1024} height={1024} loading={'eager'} />
+      
+      <Content />
+    </div>
+  </div>
+</BaseLayout>

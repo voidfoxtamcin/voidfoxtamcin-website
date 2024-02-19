@@ -1,7 +1,6 @@
 name: Hari
-gender: Male
-species: Cat
-description: Hari is a armless cat with magical spirit-like hands.
-image: /img/ocs/hari1.png
+description: Hari is an armless cat. He got armless because of the "Black Cat Massacre". He survived but the others not, but that also cost his both arms. He got a special spirit=like hands from the anonymous monk that saved him. Now, he's a strong cat and his job is to protect other spirit tree like "Cahya".
+species: Spirit Tree
+gender: male
 images:
-  - /img/ocs/hari1.png
+  - hari1.png

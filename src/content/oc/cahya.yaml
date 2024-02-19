@@ -1,9 +1,8 @@
 name: Cahya
-gender: Male
+description: Cahya is an agile spirit tree. He has been training so hard and now he developed a well-build body. He's got the hard training from "Hari", and both of them have a special relationship as a brothers. He's hardwork really paid off!
 species: Spirit Tree
-description: Cahya is a very-active and happy spirit tree.
-image: /img/ocs/cahya1.png
+gender: male
 images:
-  - /img/ocs/cahya1.png
-  - /img/ocs/cahya2.png
-  - /img/ocs/cahya3.png
+  - cahya1.png
+  - cahya2.png
+  - cahya3.png

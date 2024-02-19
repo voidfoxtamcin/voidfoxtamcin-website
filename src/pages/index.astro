@@ -1,36 +1,43 @@
 ---
-import {Image} from "astro:assets"
-import MyLayout from "@/layouts/MyLayout.astro"
-import ProfileImg from "@/img/profile.png"
-import { Icon } from "astro-icon/components"
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import {Links, SocialMedia} from "@/utils/links"
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProfileShork from "@/img/profile-pic.png"
+import ProfileFox from "@/img/profile-fox.png"
 ---
 
-<MyLayout title="Tamcin's Website" bgClass="bg-slate-900">
-<div class="fixed w-[48rem] h-[48rem] bg-slate-800 rounded-full -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-<div class="min-h-screen grid xl:grid-cols-2 place-content-center xl:place-items-center gap-8 relative z-10">
-  <div class="text-center xl:text-right w-full">
-    <Image src={ProfileImg} alt={'Profile'} class:list={'mx-auto xl:mx-0 xl:ml-auto rounded-full'} />
-    <h1 class="text-3xl md:text-6xl font-black text-white">VOIDFOXTAMCIN</h1>
-    <p class="text-xl text-white">Weird guy who love to codes and draw.</p>
-
-    <p class="font-semibold text-blue-500 text-xl mt-4">FOLLOW ME ON</p>
-    <ul class="flex flex-row justify-center xl:justify-end gap-x-4 text-4xl text-white">  
-      <li><a href="https://twitter.com/voidfoxtamcin" target="_blank" rel="noopener"><Icon name={'mdi:twitter'} class="inline"/></a></li>
-      <li><a href="https://instagram.com/voidfoxtamcin" target="_blank" rel="noopener"><Icon name={'mdi:instagram'} class="inline"/></a></li>
-      <li><a href="https://bsky.app/profile/voidfoxtamcin.bsky.social" target="_blank" rel="noopener"><Icon name={'mdi:butterfly-outline'} class="inline"/></a></li>
-      <li><a href="https://patreon.com/VoidFoxTamcin" target="_blank" rel="noopener"><Icon name={'mdi:patreon'} class="inline"/></a></li>
-      <li><a href="https://itaku.ee/profile/voidfoxtamcin" target="_blank" rel="noopener"><Icon name={'mdi:bird'} class="inline"/></a></li>
-  </div>
-  <div class="h-1 w-full bg-white mx-auto block xl:hidden"></div>
-  <div class="text-center xl:text-left w-full">
-    <ul class="flex flex-col gap-y-2 text-white md:text-2xl font-semibold">
-      <li><a href="/commission-info" class="inline-block hover:text-red-500 underline"><Icon name={'mdi:link-variant'} class={'inline'} /> COMMISSION INFO</a></li>
-      <li><a href="/portofolio" class="inline-block hover:text-red-500 underline"><Icon name={'mdi:link-variant'} class={'inline'} /> PORTOFOLIO</a></li>
-      <li><a href="/my-original-characters" class="inline-block hover:text-red-500 underline"><Icon name={'mdi:link-variant'} class={'inline'} /> MY ORIGINAL CHARACTERS</a></li>
-      <li><a href="/blog" class="inline-block hover:text-red-500 underline"><Icon name={'mdi:link-variant'} class={'inline'} /> BLOG</a></li>
-    </ul>
-  </div>
-
-  
-</div>
-</MyLayout>
+<BaseLayout title="My Website" description="Welcome to Tamcin's world!">
+	<div class="min-h-screen p-8 flex flex-col gap-8 justify-center items-start font-anta max-w-2xl mx-auto">
+		<div class="flex flex-col gap-8">
+			<div class="flex flex-col gap-2">
+				<p class="dark:text-slate-600 text-slate-300">These are the same guy...</p>
+				<div class="flex gap-2">
+					<Image src={ProfileFox} width={512} alt={'Profile Pic'} class={'rounded max-w-24'} loading={'eager'} />
+					<Image src={ProfileShork} width={512} alt={'Profile Pic'} class={'rounded max-w-24'} loading={'eager'} />
+				</div>
+			</div>
+			<div class="">
+				<h1 class="dark:text-white text-slate-800 text-2xl font-semibold uppercase md:text-4xl">VoidFoxTamcin</h1>
+				<p class="dark:text-slate-400 text-slate-400 text-xl">A guy who love coding weird stuff and drawing beefy characters.~</p>
+			</div>
+		</div>
+		<div>
+		<h2 class="dark:text-white text-slate-800 text-xl font-semibold uppercase md:text-2xl">Related Links</h2>
+			<ul>
+				{Links.map((link) => (
+					<li class="text-green-500 text-xl"><Icon name={'mdi:link'} class={'inline-block'} /> <a href={link.href}>{link.name}</a></li>
+					))}
+			</ul>
+		</div>
+		<div>
+			<h2 class="dark:text-white text-slate-800 text-xl font-semibold uppercase md:text-2xl">My Social Media</h2>
+				<ul>
+					{SocialMedia.map((link) => (
+						<li class="text-blue-500 text-xl"><Icon name={`mdi:${link.icon}`} class={'inline-block'} /> <a href={link.href} target="_blank">{link.name}</a></li>
+						))}
+				</ul>
+			</div
+		</div>
+	</div>
+</BaseLayout>

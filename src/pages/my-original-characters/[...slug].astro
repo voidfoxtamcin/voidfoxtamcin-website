@@ -1,0 +1,68 @@
+---
+export const prerender = true;
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const ocs = await getCollection("oc");
+  return  ocs.map((oc) => ({
+    params: {slug: oc.id},
+    props: {oc}
+  }))
+}) satisfies GetStaticPaths;
+
+type Props = {
+  oc: CollectionEntry<"oc">
+}
+
+const {oc} = Astro.props;
+---
+
+<BaseLayout title={`Info of ${oc.data.name}`} description={oc.data.description} image={`/img/ocs/${oc.data.images[0]}`}>
+  <div class="min-h-screen p-8 flex flex-col gap-8 items-start font-anta max-w-2xl mx-auto dark:text-slate-400 text-slate-500">
+    <section>
+      <button id="goBack" class="px-3 py-2 rounded border border-slate-400 text-slate-400 inline-block mb-4 hover:bg-slate-400 hover:text-slate-800 text-base cursor-pointer">Go Back</button>
+      <h1 class="dark:text-white text-slate-800 text-2xl">{oc.data.name}</h1>
+      <p>{oc.data.description}</p>
+    </section>
+    
+    <section>
+      <h2 class="dark:text-white text-slate-800 text-2xl">More Info</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td>{oc.data.name}</td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>:</td>
+            <td>{oc.data.gender.charAt(0).toUpperCase() + oc.data.gender.slice(1)}</td>
+          </tr>
+          <tr>
+            <td>Species</td>
+            <td>:</td>
+            <td>{oc.data.species}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+    <section>
+      <h2 class="dark:text-white text-slate-800 text-2xl">More Image of {oc.data.name}</h2>
+      {oc.data.images.map((img, idx) => (
+        <Image src={`/img/ocs/${img}`} alt={`Cahya ${idx + 1}`} width={1024} height={1024} />
+      ))}
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  const goBack_btn: HTMLButtonElement = document.getElementById("goBack") as HTMLButtonElement;
+  goBack_btn.addEventListener("click", function () {
+    window.history.back()
+  })
+</script>

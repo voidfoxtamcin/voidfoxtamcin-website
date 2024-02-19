@@ -1,41 +1,37 @@
 ---
-import MyLayout from "@/layouts/MyLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Navbar from "@/components/Navbar.astro";
 import { Image } from "astro:assets";
-import { GET } from "@/pages/api/gallery.json.ts";
-import type { Images as ImagesType, Image as ImageType } from "@/lib/types";
+import type {Images as ImagesType} from "@/utils/types"
+import {GET} from "@/pages/api/portofolio.json.ts"
 
 let response = await GET(Astro);
-const data: ImagesType = await response.json();
+const data:ImagesType[] = await response.json();
 ---
 
-<MyLayout title="Tamcin's Portofolio" bgClass="bg-slate-900">
-  <div class="py-8 px-4">
-    <h1 class="text-3xl md:text-6xl font-black text-white text-center">PORTOFOLIO</h1>
+<BaseLayout title="Portofolio" description="In this page, you can see some of my art works!">
+  <Navbar />
+  <div class="min-h-screen p-8 flex flex-col gap-8 font-anta dark:text-slate-400 text-slate-600">
+    <section class="text-xl max-w-2xl w-full mx-auto">
+      <button id="goBack" class="px-3 py-2 rounded border border-slate-400 text-slate-400 inline-block mb-4 hover:bg-slate-400 hover:text-slate-800 text-base cursor-pointer">Go Back</button>
 
-    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 mt-8">
-      {
-        data.images.map((img: ImageType, index: number) => (
-          <Image
-            src={"/img/" + img.src}
-            format="png"
-            alt={`protofolio image ${img.src}`}
-            width={768}
-            height={768}
-            class="mb-4 rounded-lg min-w-full"
-          />
-        ))
-      }
-    </div>
+      <h1 class="dark:text-white text-slate-800 text-2xl font-semibold">My Art Works</h1>
+    </section>
 
-    <button
-          onclick="goBack()"
-          class="block w-full px-4 py-3 text-center font-semibold bg-slate-700 rounded-lg mt-4 md:text-xl text-white"
-          >GO BACK</button>
+    <section class="text-xl container mx-auto">
+      <div class="column columns-1 md:columns-2 lg:columns-3">
+        {//@ts-ignore
+        data.images.map((img) => (
+          <Image src={`/img/portofolio/${img.src}`} width={1024} height={1024} alt={img.src} class="w-full rounded block mb-4" />
+        ))}
+      </div>
+    </section>
   </div>
-</MyLayout>
+</BaseLayout>
 
-<script is:inline>
-  function goBack(){
-    window.history.back();
-  }
+<script>
+  const goBack_btn: HTMLButtonElement = document.getElementById("goBack") as HTMLButtonElement;
+  goBack_btn.addEventListener("click", function () {
+    window.history.back()
+  })
 </script>

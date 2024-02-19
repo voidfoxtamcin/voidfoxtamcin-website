@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Navbar from "@/components/Navbar.astro";
+import { Image } from "astro:assets";
+import {type CollectionEntry, getCollection} from "astro:content"
+
+const ocCollection: CollectionEntry<"oc">[] = await getCollection("oc");
+---
+
+<BaseLayout title="My Original Characters" description="In this page, you can see all of my original characters with its lore!">
+  <Navbar />
+  <div class="min-h-screen p-8 flex flex-col gap-8 items-start font-anta max-w-2xl mx-auto dark:text-slate-400 text-slate-600">
+    <section>
+      <!-- <button id="goBack" class="px-3 py-2 rounded border border-slate-400 text-slate-400 inline-block mb-4 hover:bg-slate-400 hover:text-slate-800 text-base cursor-pointer">Go Back</button> -->
+      <h1 class="text-2xl dark:text-white text-slate-800 font-semibold uppercase">My Original Characters</h1>
+    </section>
+
+    <div class="flex flex-col gap-4">
+      {ocCollection.map((oc) => (
+        <article class="border dark:border-slate-600 border-slate-200">
+          <Image src={`/img/ocs/${oc.data.images[0]}`} width={512} height={512} alt={`${oc.data.name}`} class={'mx-auto object-cover aspect-video object-top w-full'} />
+          <div class="p-4 dark:bg-slate-700 bg-slate-50 block">
+            <p class="text-2xl dark:text-white text-slate-800">{oc.data.name}</p>
+            <p class="">{oc.data.description}</p>
+            <a href={`/my-original-characters/${oc.id}`} class="px-3 py-2 rounded border border-slate-400 text-slate-400 inline-block mb-4 hover:bg-slate-400 hover:text-slate-800 text-base cursor-pointer mt-2">Read more info about {oc.data.name}!</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const goBack_btn: HTMLButtonElement = document.getElementById("goBack") as HTMLButtonElement;
+  goBack_btn.addEventListener("click", function () {
+    window.history.back()
+  })
+</script>

@@ -1,0 +1,12 @@
+---
+const link = [
+  {name: 'Home', href: '/'},
+  {name: 'Blog', href: '/blog'},
+]
+---
+
+<nav class="flex flex-row justify-center items-center border-b dark:border-slate-600 border-slate-400 sticky top-0 dark:bg-slate-800 bg-slate-50">
+  {link.map((link) => (
+    <a href={link.href} class="dark:text-slate-400 text-slate-600 font-semibold inline-block px-4 py-3 font-anta">{link.name}</a>
+  ))}
+</nav>

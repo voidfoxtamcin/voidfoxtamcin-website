@@ -1,127 +1,89 @@
 ---
-import MyLayout from "@/layouts/MyLayout.astro";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import commsPrice from "@/img/comms-price.jpg";
-let isCommissionOpen = false;
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CommissionPrice from "@/img/_image.webp";
+import {Prices} from "@/utils/prices"
+import Navbar from "@/components/Navbar.astro";
+
+const isOpen = false;
 ---
 
-<MyLayout title="Commission Info!" bgClass="bg-slate-900">
-  <div class="container mx-auto py-8 px-4">
-    <h1 class="text-3xl md:text-6xl font-black text-slate-200 text-center mb-4">COMMISSION INFO</h1>
-    <div class="grid md:grid-cols-2 gap-4">
-      <div class="bg-green-500 border-2 border-green-500 bg-opacity-20 rounded-lg overflow-hidden">
-        <p
-          class="border-b-2 border-green-500 px-4 py-3 bg-green-500 bg-opacity-50 text-green-200 text-center text-xl font-bold"
-        >
-          &check; I WILL DO
-        </p>
-        <div class="p-4">
-          <ul class="md:text-xl font-semibold list-inside list-disc text-green-400">
-            <li><span class="">Furry</span></li>
-            <li><span class="">Humans</span></li>
-            <li><span class="">Mobian</span></li>
-            <li><span class="">Original Characters</span></li>
-            <li><span class="">Suggestive</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-2 border-red-500 bg-red-500 bg-opacity-20 rounded-lg overflow-hidden">
-        <p
-          class="border-b-2 border-red-500 px-4 py-3 bg-red-500 bg-opacity-50 text-red-200 text-center text-xl font-bold"
-        >
-          &cross; I WON'T DO
-        </p>
-        <div class="p-4">
-          <ul class="md:text-xl font-semibold list-inside list-disc text-red-400">
-            <li><span class="">NSFW / Gore</span></li>
-            <li><span class="">Mecha</span></li>
-            <li><span class="">Complicated Design</span></li>
-            <li><span class="">Political Related</span></li>
-            <li><span class="">Hate Speech</span></li>
-          </ul>
-        </div>
-      </div>
+<BaseLayout title="Commission Info" description="Terms of Service when you wan to commission me.">
+  <Navbar />
+  <div class="min-h-screen p-8 flex flex-col gap-8 font-anta max-w-2xl mx-auto dark:text-slate-400 text-slate-600">
+    <div class="text-xl">
+      <!-- <button id="goBack" class="px-3 py-2 rounded border border-slate-400 text-slate-400 inline-block mb-4 hover:bg-slate-400 hover:text-slate-800 text-base">Go Back</button> -->
+      <h1 class="text-2xl font-semibold dark:text-white text-slate-800">Commission Info</h1>
+      <p class="">In this page, I will explain how to commission me and giving you the ToS (Terms of Service).</p>
     </div>
 
-    <hr class="border-2 border-slate-700 my-8" />
-
-    <div class="grid lg:grid-cols-2 gap-4 items-center">
-      <div>
-        <h1 class="text-2xl md:text-5xl font-black italic text-center text-slate-200 mb-8">
-          &star; COMMISSION PRICE &star;
-        </h1>
-        <Image
-          src={commsPrice}
-          alt={"comms price"}
-          class="max-w-2xl w-full mx-auto rounded-lg"
-        />
-      </div>
-      <div>
-        <div class="bg-yellow-500 bg-opacity-20 border-2 border-yellow-500 rounded-lg px-4 py-3 mb-4">
-          <h2 class="text-2xl md:text-4xl font-black italic mb-6 text-yellow-500">! Notes</h2>
-          <ul class="md:text-xl font-semibold custom-disc list-inside text-yellow-500">
-            <li>Additional characters +50% from the base price.</li>
-            <li>Payment via <span class="bg-yellow-500 bg-opacity-20">PayPal in USD</span></li>
-            <li>Complex background <span class="bg-yellow-500 bg-opacity-20">+$10</span></li>
-          </ul>
-        </div>
-        <div class="bg-yellow-500 bg-opacity-20 border-2 border-yellow-500 rounded-lg px-4 py-3 mb-4">
-          <h2 class="text-2xl md:text-4xl font-black italic mb-6 text-yellow-500">! Contacts</h2>
-          <ul class="md:text-xl font-semibold custom-disc list-inside text-yellow-500">
-            <li>Discord: voidfoxtamcin</li>
-            <li>Telegram: voidfoxtamcin</li>
-          </ul>
-        </div>
-      </div>
+    <div class="p-4 rounded dark:text-white text-slate-800 text-xl dark:bg-slate-700 bg-slate-200">
+      <p>Commission Status:</p>
+      <p class={`text-2xl ${isOpen ? 'dark:text-green-400 text-green-600' : 'dark:text-red-400 text-red-600'} uppercase`}>{isOpen ? 'Open' : 'Closed'}</p>
     </div>
 
-    <hr class="border-2 border-slate-700 my-8" />
+    <div class="text-xl">
+      <h2 class="text-2xl font-semibold dark:text-white text-slate-800">What I draw?</h2>
+      <p class="dark:text-green-400 text-green-600">I draw...</p>
+      <ul class="dark:text-green-400 text-green-600 mb-2">
+        <li><Icon name={'mdi:check'} class="inline-block mr-2" />Human</li>
+        <li><Icon name={'mdi:check'} class="inline-block mr-2" />Anthro / Furry</li>
+        <li><Icon name={'mdi:check'} class="inline-block mr-2" />Mobian</li>
+        <li><Icon name={'mdi:check'} class="inline-block mr-2" />Suggestive</li>
+      </ul>
+      <p class="">and, <span class="dark:text-red-400 text-red-600">I don't draw...</span></p>
+      <ul class="dark:text-red-400 text-red-600">
+        <li><Icon name={'mdi:times'} class="inline-block mr-2" />NSFW / Gore</li>
+        <li><Icon name={'mdi:times'} class="inline-block mr-2" />Mecha / Complicated design</li>
+        <li><Icon name={'mdi:times'} class="inline-block mr-2" />Political Related</li>
+        <li><Icon name={'mdi:times'} class="inline-block mr-2" />Hate speech</li>
+      </ul>
+    </div>
 
-    <h1 class="text-2xl md:text-5xl font-black italic text-center my-8 text-slate-200">
-      COMMISSION STATUS: {isCommissionOpen ? <span class="text-green-500">OPEN</span> : <span class="text-red-500">CLOSED</span>}
-    </h1>
-    <div class="mt-8">
-      <button
-          onclick="goBack()"
-          class="block w-full px-4 py-3 text-center font-semibold bg-slate-700 rounded-lg mt-4 md:text-xl text-white"
-          >GO BACK</button>
-      </div>
+    <div class="text-xl">
+      <h2 class="text-2xl font-semibold dark:text-white text-slate-800">Commission Prices</h2>
+      <table class="dark:text-white text-slate-800 text-xl w-full border border-slate-600 mt-2">
+        <thead>
+          <tr class="border-b border-slate-600 dark:bg-slate-600 bg-slate-200 text-left divide-x divide-slate-600">
+            <th class="p-2">Commission Type</th>
+            <th class="p-2">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Prices.map((price, idx) => (
+            <tr class={`divide-x divide-slate-600 ${idx % 2 == 1 ? 'bg-white bg-opacity-5' : ''}`}>
+              <td class="p-2">{price.name}</td>
+              <td class="p-2">{price.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <Image src={CommissionPrice} widths={[64, 128, 256, 512, 1024]} alt={'Commission Price'} class={'w-full mt-4 rounded'} loading={'eager'} />
+    </div>
+
+    <div class="text-xl">
+      <h2 class="text-2xl font-semibold dark:text-white text-slate-800">Extra Notes</h2>
+      <ul class="dark:text-yellow-400 text-yellow-600 list-disc list-inside">
+        <li>Additional characters +50% from the base price.</li>
+        <li>Payment via PayPal in USD</li>
+        <li>Complex background +$10</li>
+      </ul>
+    </div>
+
+    <div class="text-xl">
+      <h2 class="text-2xl font-semibold dark:text-white text-slate-800">Contact Me At:</h2>
+      <ul class="dark:text-yellow-400 text-yellow-600 list-disc list-inside">
+        <li>Discord: voidfoxtamcin</li>
+        <li>Telegram: voidfoxtamcin</li>
+      </ul>
     </div>
   </div>
-</MyLayout>
+</BaseLayout>
 
-<script is:inline>
-  function goBack(){
-    window.history.back();
-  }
+<script>
+  const goBack_btn: HTMLButtonElement = document.getElementById("goBack") as HTMLButtonElement;
+  goBack_btn.addEventListener("click", function () {
+    window.history.back()
+  })
 </script>
-
-<style>
-  .custom-shadow {
-    box-shadow: 0.2rem 0.2rem 0rem #000000;
-  }
-
-  .note-shadow {
-    box-shadow:
-      0.2rem 0.2rem 0rem rgb(234 179 8),
-      0.4rem 0.4rem 0rem rgb(133 77 14);
-  }
-
-  .custom-disc li {
-    position: relative;
-    margin-left: 1.5rem;
-  }
-
-  .custom-disc li::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -1.5rem;
-    transform: translateY(-50%) rotate(45deg);
-    width: 0.5rem;
-    height: 0.5rem;
-    background-color: transparent;
-    border: 0.25rem solid rgb(234 179 8);
-  }
-</style>
-

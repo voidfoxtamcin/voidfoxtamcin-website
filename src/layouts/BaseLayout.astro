@@ -1,0 +1,39 @@
+---
+import DarkLightToggler from "@/components/DarkLightToggler.svelte";
+
+const {title, description, image} = Astro.props;
+const ogImage = new URL(image || '/img/ogImage.png', Astro.url.origin);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Open Graph -->
+  <meta name="og:title" content={title} />
+  <meta name="og:description" content={description} />
+  <meta name="og:image" content={ogImage} />
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:title" content={title}/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content={ogImage}/>
+  <meta name="twitter:domain" content={import.meta.env.SITE}/>
+
+  <!-- Custom Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+  
+  <title>{title}</title>
+</head>
+<body class="dark:bg-slate-800 bg-slate-100">
+  <slot />
+
+  <DarkLightToggler client:load />
+</body>
+</html>

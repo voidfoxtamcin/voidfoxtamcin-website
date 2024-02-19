@@ -1,9 +1,8 @@
 name: Razor
-gender: Male
+description: Razor is a funny snake. He mostly active during the night. He works as a private hym instructor. He can eat food triple his body weight and doesn't have to eat again for a week. Instead of having deadly venom, he's venom actually heals. He secretly have a crush with someone ~
 species: Snake
-description: Razor is a snake beefy guy that secretly have a crush on Tamcin.
-image: /img/ocs/razor3.png
+gender: male
 images:
-  - /img/ocs/razor1.png
-  - /img/ocs/razor2.png
-  - /img/ocs/razor3.png
+  - razor3.png
+  - razor1.png
+  - razor2.png
